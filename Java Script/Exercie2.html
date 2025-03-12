@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2</title>
+    <link rel="stylesheet" href="Exercice2.css">
+</head>
+<body>
+    <h1>Boucles en js</h1>
+    
+    <button onclick="afficherNombres()">Afficher les nombres de 1 à 10</button>
+    <button onclick="calculerSomme()">Calculer la somme de 1 à 100</button>
+    <button onclick="devinerNombre()">Deviner le nombre secret</button>
+    <button onclick="genererFibonacci()">Générer la suite de Fibonacci</button>
+    
+    <script>
+        function afficherNombres() {
+            let result = "";
+            for (let i = 1; i <= 10; i++) {
+                result += i + " ";
+            }
+            alert("Nombres de 1 à 10 : " + result);
+        }
+
+        function calculerSomme() {
+            let somme = 0;
+            let i = 1;
+            while (i <= 100) {
+                somme += i;
+                i++;
+            }
+            alert("La somme des nombres de 1 à 100 est : " + somme);
+        }
+
+        function devinerNombre() {
+            let nombreSecret = Math.floor(Math.random() * 100) + 1;
+            let tentative;
+            do {
+                tentative = parseInt(prompt("Devinez le nombre entre 1 et 100 :"));
+                if (tentative < nombreSecret) {
+                    alert("Trop petit !");
+                } else if (tentative > nombreSecret) {
+                    alert("Trop grand !");
+                } else {
+                    alert("Bravo ! Vous avez trouvé le nombre secret.");
+                }
+            } while (tentative !== nombreSecret);
+        }
+
+        function genererFibonacci() {
+            let N = parseInt(prompt("Entrez le nombre de termes de la suite de Fibonacci :"));
+            let fibonacci = [0, 1];
+            for (let i = 2; i < N; i++) {
+                fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+            }
+            alert("Suite de Fibonacci : " + fibonacci.join(", "));
+        }
+    </script>
+</body>
+</html>

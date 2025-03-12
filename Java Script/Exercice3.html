@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3</title>
+    <link rel="stylesheet" href="Exercice3.css">
+</head>
+<body>
+    <h1>Manipulation des nombres</h1>
+    
+    <button onclick="afficherNombresPremiers()">Afficher nombres premiers</button>
+    <button onclick="afficherFacteurs()">Afficher les facteurs</button>
+    <button onclick="calculerMoyenne()">Calculer la moyenne</button>
+    <button onclick="genererTriangle()">Générer un triangle</button>
+    
+    <script src="Exercice3.js">
+        function estPremier(n) {
+            if (n < 2) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function afficherNombresPremiers() {
+            let nombresPremiers = [];
+            for (let i = 1; i <= 100; i++) {
+                if (estPremier(i)) {
+                    nombresPremiers.push(i);
+                }
+            }
+            alert("Nombres premiers entre 1 et 100 : " + nombresPremiers.join(", "));
+        }
+
+        function afficherFacteurs() {
+            let nombre = parseInt(prompt("Entrez un nombre :"));
+            let facteurs = [];
+
+            for (let i = 1; i <= nombre; i++) {
+                if (nombre % i === 0) {
+                    facteurs.push(i);
+                }
+            }
+            alert("Facteurs de " + nombre + " : " + facteurs.join(", "));
+        }
+
+        function calculerMoyenne() {
+            let somme = 0, count = 0, nombre;
+            do {
+                nombre = parseFloat(prompt("Entrez un nombre positif (ou un nombre négatif pour arrêter) :"));
+                if (nombre >= 0) {
+                    somme += nombre;
+                    count++;
+                }
+            } while (nombre >= 0);
+            let moyenne = count > 0 ? (somme / count).toFixed(2) : 0;
+            alert("La moyenne des nombres positifs saisis est : " + moyenne);
+        }
+
+        function genererTriangle() {
+            let hauteur = parseInt(prompt("Entrez la hauteur du triangle :"));
+            let motif = "";
+            for (let i = 1; i <= hauteur; i++) {
+                motif += "*".repeat(i) + "\n";
+            }
+            alert("Motif triangulaire :\n" + motif);
+        }
+    </script>
+</body>
+</html>
